@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dhogrwh8mqhcq"]
+
+[ext_resource type="PackedScene" uid="uid://21an4ln8bp7v" path="res://scenes/frogger.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=998919476]
+
+[node name="Frogger" parent="." unique_id=2009321829 instance=ExtResource("1_o5qli")]
+position = Vector2(353.00003, 6)
+scale = Vector2(2.4, 2.4)

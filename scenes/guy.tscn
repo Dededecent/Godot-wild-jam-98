@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dsbhwm8qojbcj"]
+
+[ext_resource type="Script" uid="uid://cueyayrmt70cd" path="res://guy.gd" id="1_6b1ya"]
+[ext_resource type="Texture2D" uid="uid://b1i6hcdgy1kyw" path="res://assets/tileset.png" id="2_daf80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obxsg"]
+atlas = ExtResource("2_daf80")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ngk8"]
+size = Vector2(16, 16)
+
+[node name="guy" type="Area2D" unique_id=1186156628]
+script = ExtResource("1_6b1ya")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244563877]
+texture = SubResource("AtlasTexture_obxsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2034258378]
+shape = SubResource("RectangleShape2D_1ngk8")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1420022994]
+target_position = Vector2(0, 0)
+collision_mask = 2
