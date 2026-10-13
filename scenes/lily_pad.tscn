@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://drjmsfdtupj5d"]
+
+[ext_resource type="Script" uid="uid://bqe2ln8n68tdp" path="res://scripts/lily_pad.gd" id="1_5qnqs"]
+[ext_resource type="Texture2D" uid="uid://b1i6hcdgy1kyw" path="res://assets/tileset.png" id="2_ewbmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydrpt"]
+atlas = ExtResource("2_ewbmy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jcqr"]
+size = Vector2(16, 16)
+
+[node name="LilyPad" type="Area2D" unique_id=1925449113]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_5qnqs")
+direction = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1261242876]
+texture = SubResource("AtlasTexture_ydrpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=864607853]
+shape = SubResource("RectangleShape2D_8jcqr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1599673230]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

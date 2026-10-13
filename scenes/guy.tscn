@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsbhwm8qojbcj"]
 
-[ext_resource type="Script" uid="uid://cueyayrmt70cd" path="res://guy.gd" id="1_6b1ya"]
+[ext_resource type="Script" uid="uid://cueyayrmt70cd" path="res://scripts/guy.gd" id="1_6b1ya"]
 [ext_resource type="Texture2D" uid="uid://b1i6hcdgy1kyw" path="res://assets/tileset.png" id="2_daf80"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obxsg"]
