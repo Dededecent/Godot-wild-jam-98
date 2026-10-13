@@ -1,5 +1,5 @@
 extends Area2D
-const ANIM_SPEED := 3
+const ANIM_SPEED := 10
 const SIZE := 16
 var realPosition: Vector2
 var moving := false
@@ -10,6 +10,7 @@ var inputs := {"right": Vector2.RIGHT,
 
 
 func _ready() -> void:
+	position = position.snapped(Vector2(SIZE/2,SIZE/2))
 	realPosition = position
 func _unhandled_input(event: InputEvent) -> void:
 	for direction in inputs.keys():
@@ -20,13 +21,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				move(inputs[direction])
 					
 
-
 func move(direction: Vector2):
 	var raycast: RayCast2D = $RayCast2D	
+	var padcast: RayCast2D = $PadCast
 	
 	raycast.set_target_position(direction*SIZE)
 	raycast.force_raycast_update()
-	if !raycast.is_colliding():
+	padcast.set_target_position(direction*SIZE)
+	padcast.force_raycast_update()
+
+	if  !raycast.is_colliding() or padcast.is_colliding():
 		var tween = create_tween()
 		realPosition += direction * SIZE
 		tween.tween_property(self, "position",
@@ -34,6 +38,7 @@ func move(direction: Vector2):
 		moving = true
 		await tween.finished
 		moving = false
+		position = position.snapped(Vector2(SIZE/2,SIZE/2))
 	else:
 		var tween = create_tween()
 		realPosition += direction * SIZE
@@ -42,9 +47,11 @@ func move(direction: Vector2):
 		moving = true
 		await tween.finished
 		moving = false
-		queue_free()
-		
+		position = position.snapped(Vector2(SIZE/2,SIZE/2))
+		die()
 
-		
-		
+
+func die():
+	print("i'm dead")
+	queue_free()
 	

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bdawiw4ug34xe"]
+
+[ext_resource type="Script" uid="uid://do17dj7h7a0jd" path="res://scripts/main.gd" id="1_ns6u7"]
+[ext_resource type="PackedScene" uid="uid://21an4ln8bp7v" path="res://scenes/frogger.tscn" id="1_tyffc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hwwrh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Main" type="Node3D" unique_id=1801954530]
+script = ExtResource("1_ns6u7")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1246360689]
+transform = Transform3D(1, 0, 0, 0, 0.9230827, 0.3846015, 0, -0.3846015, 0.9230827, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1114135343]
+transform = Transform3D(0.9999465, -0.0068419036, -0.0077620437, 0.009419972, 0.91232836, 0.40935126, 0.0042807823, -0.40940246, 0.912344, 0.2187779, -0.569764, -1.5917168)
+texture_filter = 0
+texture = SubResource("ViewportTexture_hwwrh")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=148623180]
+size = Vector2i(142, 256)
+
+[node name="Frogger" parent="SubViewport" unique_id=2009321829 instance=ExtResource("1_tyffc")]

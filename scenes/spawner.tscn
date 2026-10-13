@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://bsj5rguyqouwo"]
 
-[ext_resource type="Script" uid="uid://dds548vu13bts" path="res://lily_pad_spawner.gd" id="1_uw23y"]
-[ext_resource type="PackedScene" uid="uid://drjmsfdtupj5d" path="res://scenes/lily_pad.tscn" id="2_hrudg"]
+[ext_resource type="Script" uid="uid://dds548vu13bts" path="res://scripts/lily_pad_spawner.gd" id="1_2vbf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1gl3"]
 size = Vector2(16, 16)
 
-[node name="LilyPadSpawner" type="Area2D" unique_id=1956666546]
-script = ExtResource("1_uw23y")
-spawnDirection = null
-lilyPad = ExtResource("2_hrudg")
+[node name="Spawner" type="Area2D" unique_id=1956666546]
+collision_layer = 0
+collision_mask = 40
+script = ExtResource("1_2vbf6")
 
 [node name="Timer" type="Timer" parent="." unique_id=61657823]
 wait_time = 3.0
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=938819490]
 shape = SubResource("RectangleShape2D_d1gl3")
 
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
