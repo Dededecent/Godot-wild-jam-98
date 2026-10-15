@@ -1,9 +1,52 @@
-[gd_scene format=3 uid="uid://dhogrwh8mqhcq"]
+[gd_scene format=3 uid="uid://bdawiw4ug34xe"]
 
+[ext_resource type="Script" uid="uid://do17dj7h7a0jd" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://21an4ln8bp7v" path="res://scenes/frogger.tscn" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://cnw12vvxadscg" path="res://assets/wall.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dxrbfih45jm7r" path="res://assets/windowWall.png" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://ul1fp38n6h7k" path="res://scenes/gui_panel_3d.tscn" id="5_tbgi4"]
 
-[node name="Main" type="Node2D" unique_id=998919476]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
+viewport_path = NodePath("SubViewport")
 
-[node name="Frogger" parent="." unique_id=2009321829 instance=ExtResource("1_o5qli")]
-position = Vector2(353.00003, 6)
-scale = Vector2(2.4, 2.4)
+[node name="Main" type="Node3D" unique_id=1801954530]
+script = ExtResource("1_0wfyh")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1246360689]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1114135343]
+transform = Transform3D(0.99969435, -0.011144173, -0.022064922, 0.023396498, 0.71466905, 0.6990714, 0.007978536, -0.69937396, 0.7147113, 0.074368834, -1.8800286, -0.8019563)
+texture_filter = 0
+texture = SubResource("ViewportTexture_0wfyh")
+
+[node name="WallLeft" type="Sprite3D" parent="." unique_id=1446169664]
+transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, -4, 0, 0)
+visible = false
+texture_filter = 0
+texture = ExtResource("2_jyhfs")
+
+[node name="WallRight" type="Sprite3D" parent="." unique_id=897598434]
+transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, 4, 0, 0)
+visible = false
+texture_filter = 0
+texture = ExtResource("2_jyhfs")
+
+[node name="WallBack" type="Sprite3D" parent="." unique_id=159120436]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 4)
+visible = false
+texture_filter = 0
+texture = ExtResource("2_jyhfs")
+
+[node name="WallFront" type="Sprite3D" parent="." unique_id=438762359]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, -4)
+texture_filter = 0
+texture = ExtResource("3_tbgi4")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=148623180]
+size = Vector2i(142, 256)
+
+[node name="Frogger" parent="SubViewport" unique_id=2009321829 instance=ExtResource("1_o5qli")]
+
+[node name="GUIPanel3D" parent="." unique_id=695755933 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.7512565, -0.7665339, -3.3572235)
