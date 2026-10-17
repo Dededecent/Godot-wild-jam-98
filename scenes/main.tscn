@@ -9,11 +9,21 @@
 [ext_resource type="Texture2D" uid="uid://dxrbfih45jm7r" path="res://assets/windowWall.png" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ul1fp38n6h7k" path="res://scenes/gui_panel_3d.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://k50ptqbuesyw" path="res://assets/EveningSkyHDRI048B_1K_TONEMAPPED.jpg" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://dmf14ak77qqhg" path="res://assets/Grass001_1K-JPG_NormalDX.jpg" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://b1j8uf852akub" path="res://assets/Grass001_1K-JPG_Color.jpg" id="9_ya4ey"]
+[ext_resource type="ArrayMesh" uid="uid://c5fbd6s3qyjg1" path="res://assets/track.obj" id="12_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://bgwx3pnrg27q8" path="res://assets/trainrealy_ccbync4.png" id="13_trceg"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p648e"]
+albedo_texture = ExtResource("9_ya4ey")
+normal_enabled = true
+normal_texture = ExtResource("9_choun")
+
 [sub_resource type="BoxMesh" id="BoxMesh_hwwrh"]
+material = SubResource("StandardMaterial3D_p648e")
 size = Vector3(29.987854, 1, 46.191284)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_choun"]
@@ -29,6 +39,8 @@ background_mode = 2
 sky = SubResource("Sky_85g3d")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 10.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6dy"]
 
 [node name="Main" type="Node3D" unique_id=1801954530]
 script = ExtResource("1_0wfyh")
@@ -81,12 +93,31 @@ size = Vector2i(142, 256)
 [node name="GUIPanel3D" parent="." unique_id=1618948147 instance=ExtResource("5_tbgi4")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.7512565, -0.7665339, -3.3572235)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2140327846]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=2140327846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4322815, -5, -14.416077)
 mesh = SubResource("BoxMesh_hwwrh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1608427364]
 environment = SubResource("Environment_hwwrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1173123025]
+transform = Transform3D(-0.88698685, -1.2451554e-09, 0.4617948, 0.31243563, 0.73638004, 0.600107, -0.34005645, 0.67656815, -0.6531594, 1.3175201, 168.1658, 219.38597)
+visible = false
+light_energy = 4.0
+sky_mode = 1
+
+[node name="Track" type="MeshInstance3D" parent="." unique_id=1055203871]
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, 3.3812275, -3.6393745, -32.238056)
+mesh = ExtResource("12_eb6dy")
+surface_material_override/0 = SubResource("StandardMaterial3D_eb6dy")
+
+[node name="Track2" type="MeshInstance3D" parent="." unique_id=1704747022]
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -6.647358, -3.6393745, -32.238056)
+mesh = ExtResource("12_eb6dy")
+
+[node name="Train" type="Sprite3D" parent="." unique_id=1519016158]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.126481, -31.062231)
+texture = ExtResource("13_trceg")
 
 [connection signal="screen_left" from="Camera3D/GUIPanel3D_left" to="." method="screen_left"]
 [connection signal="screen_right" from="Camera3D/GUIPanel3D_right" to="." method="screen_right"]

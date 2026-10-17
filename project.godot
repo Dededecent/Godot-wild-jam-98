@@ -24,6 +24,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/xesa/ExposeThemProperties/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={
