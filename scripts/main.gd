@@ -7,14 +7,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if CameraState == Camera.GAME:
 			$Camera3D.look_at($WallFront.global_position)
 			CameraState = Camera.FRONT
-			$Camera3D/GUIPanel3D_left.hide()
-			$Camera3D/GUIPanel3D_right.hide()
+			$Camera3D/GUIPanel3D_left.show()
+			$Camera3D/GUIPanel3D_right.show()
 
 		else:
 			$Camera3D.look_at($Sprite3D.global_position)
 			CameraState = Camera.GAME
-			$Camera3D/GUIPanel3D_left.show()
-			$Camera3D/GUIPanel3D_right.show()
+			$Camera3D/GUIPanel3D_left.hide()
+			$Camera3D/GUIPanel3D_right.hide()
 	$SubViewport.push_input(event, false)
 func screen_left() -> void:
 	match CameraState:
@@ -49,6 +49,6 @@ func screen_right() -> void:
 			CameraState = Camera.LEFT
 			print("test")
 		Camera.RIGHT:
-			$Camera3D.look_at($WallFront.global_position)
-			CameraState = Camera.LEFT
+			$Camera3D.look_at($WallBack.global_position)
+			CameraState = Camera.BACK
 			print("test")
