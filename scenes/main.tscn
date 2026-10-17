@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b1j8uf852akub" path="res://assets/Grass001_1K-JPG_Color.jpg" id="9_ya4ey"]
 [ext_resource type="ArrayMesh" uid="uid://c5fbd6s3qyjg1" path="res://assets/track.obj" id="12_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://bgwx3pnrg27q8" path="res://assets/trainrealy_ccbync4.png" id="13_trceg"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://decsl6525nfc8" path="res://maackMenu/scenes/windows/pause_menu.tscn" id="16_jbj1t"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
 viewport_path = NodePath("SubViewport")
@@ -116,6 +118,10 @@ mesh = ExtResource("12_eb6dy")
 [node name="Train" type="Sprite3D" parent="." unique_id=1519016158]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.126481, -31.062231)
 texture = ExtResource("13_trceg")
+
+[node name="Node" type="Node" parent="." unique_id=396040649]
+script = ExtResource("15_jkv2x")
+pause_menu_packed = ExtResource("16_jbj1t")
 
 [connection signal="screen_left" from="Camera3D/GUIPanel3D_left" to="." method="screen_left"]
 [connection signal="screen_right" from="Camera3D/GUIPanel3D_right" to="." method="screen_right"]
