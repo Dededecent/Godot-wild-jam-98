@@ -49,8 +49,6 @@ func move(direction: Vector2):
 		moving = false
 		position = position.snapped(Vector2(SIZE/2,SIZE/2))
 		die()
-
-
 func die():
 	print("i'm dead")
 	queue_free()

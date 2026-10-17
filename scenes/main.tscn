@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bee6j1cexdsdw" path="res://scenes/gui_panel_3d_camera_right.tscn" id="3_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dxrbfih45jm7r" path="res://assets/windowWall.png" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ul1fp38n6h7k" path="res://scenes/gui_panel_3d.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://raku4tm3v72p" path="res://assets/WallBack.png" id="6_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://k50ptqbuesyw" path="res://assets/EveningSkyHDRI048B_1K_TONEMAPPED.jpg" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dmf14ak77qqhg" path="res://assets/Grass001_1K-JPG_NormalDX.jpg" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://b1j8uf852akub" path="res://assets/Grass001_1K-JPG_Color.jpg" id="9_ya4ey"]
@@ -40,8 +41,6 @@ sky = SubResource("Sky_85g3d")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 10.75
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6dy"]
-
 [node name="Main" type="Node3D" unique_id=1801954530]
 script = ExtResource("1_0wfyh")
 
@@ -65,22 +64,22 @@ texture_filter = 0
 texture = ExtResource("2_tefeu")
 
 [node name="WallLeft" type="Sprite3D" parent="." unique_id=1446169664]
-transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, -4, 0, 0)
+transform = Transform3D(-1.7265998e-08, 0, 0.395, 0, 0.395, 0, -0.395, 0, -1.7265998e-08, -4, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_jyhfs")
 
 [node name="WallRight" type="Sprite3D" parent="." unique_id=897598434]
-transform = Transform3D(-5.2453663e-07, 0, 12, 0, 12, 0, -12, 0, -5.2453663e-07, 4, 0, 0)
+transform = Transform3D(-1.7265998e-08, 0, 0.395, 0, 0.395, 0, -0.395, 0, -1.7265998e-08, 4, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_jyhfs")
 
 [node name="WallBack" type="Sprite3D" parent="." unique_id=159120436]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 4)
+transform = Transform3D(0.395, 0, 0, 0, 0.395, 0, 0, 0, 0.395, 0, 0, 4)
 texture_filter = 0
-texture = ExtResource("2_jyhfs")
+texture = ExtResource("6_a8y0u")
 
 [node name="WallFront" type="Sprite3D" parent="." unique_id=438762359]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, -4)
+transform = Transform3D(0.395, 0, 0, 0, 0.395, 0, 0, 0, 0.395, 0, 0, -4)
 texture_filter = 0
 texture = ExtResource("3_tbgi4")
 
@@ -106,13 +105,12 @@ visible = false
 light_energy = 4.0
 sky_mode = 1
 
-[node name="Track" type="MeshInstance3D" parent="." unique_id=1055203871]
-transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, 3.3812275, -3.6393745, -32.238056)
-mesh = ExtResource("12_eb6dy")
-surface_material_override/0 = SubResource("StandardMaterial3D_eb6dy")
-
 [node name="Track2" type="MeshInstance3D" parent="." unique_id=1704747022]
 transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, -6.647358, -3.6393745, -32.238056)
+mesh = ExtResource("12_eb6dy")
+
+[node name="Track3" type="MeshInstance3D" parent="." unique_id=1748985801]
+transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, 3.2110062, -3.6393745, -32.238056)
 mesh = ExtResource("12_eb6dy")
 
 [node name="Train" type="Sprite3D" parent="." unique_id=1519016158]
