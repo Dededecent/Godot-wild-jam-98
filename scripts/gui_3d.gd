@@ -15,6 +15,8 @@ var last_event_time := -1.0
 @onready var node_area: Area3D = $Quad/Area3D
 
 
+signal screen_left
+signal screen_right
 
 func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
@@ -139,4 +141,12 @@ func rotate_area_to_billboard() -> void:
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
 
 func _on_button_pressed() -> void:
-	print("test")
+	pass
+
+func _left_pressed() -> void:
+	screen_left.emit()
+	
+
+func _right_pressed() -> void:
+	screen_right.emit()
+	

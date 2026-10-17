@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bee6j1cexdsdw"]
+
+[ext_resource type="Script" uid="uid://b8kho401snmu7" path="res://scripts/gui_3d.gd" id="1_ba00c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3bp0"]
+
+[sub_resource type="QuadMesh" id="1"]
+material = SubResource("StandardMaterial3D_r3bp0")
+size = Vector2(0.4, 1.89)
+
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="3"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("2")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(0.4, 1.89, 0.1)
+
+[node name="GUIPanel3D_right" type="Node3D" unique_id=695755933]
+process_mode = 3
+script = ExtResource("1_ba00c")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=356657645]
+editor_description = "SubViewport contents can be displayed using a ViewportTexture."
+canvas_item_default_texture_filter = 0
+gui_embed_subwindows = true
+size = Vector2i(40, 189)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=771485172]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RightButton" type="Button" parent="SubViewport/Control" unique_id=1305039711]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 189.0
+text = ">
+"
+
+[node name="Quad" type="MeshInstance3D" parent="." unique_id=1326342475]
+editor_description = "To setup this MeshInstance3D:
+* Set Surface Material Override to a new StandardMaterial3D.
+* At the bottom of the StandardMaterial3D's properties, set \"Local to Scene\" to true.
+* Set the Albedo Texture of StandardMaterial3D to new ViewportTexture and set the Viewport Path.
+* Transparency to Alpha.
+* Shading to Unshaded."
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("3")
+
+[node name="Area3D" type="Area3D" parent="Quad" unique_id=150863678]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D" unique_id=1684428181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0)
+shape = SubResource("4")
+
+[connection signal="pressed" from="SubViewport/Control/RightButton" to="." method="_right_pressed"]
+[connection signal="pressed" from="SubViewport/Control/RightButton" to="." method="_on_button_pressed"]

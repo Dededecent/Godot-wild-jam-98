@@ -1,11 +1,12 @@
-[gd_scene format=3 uid="uid://bee6j1cexdsdw"]
+[gd_scene format=3 uid="uid://snkiimoc6kqd"]
 
-[ext_resource type="Script" uid="uid://b8kho401snmu7" path="res://scripts/gui_3d.gd" id="1_kw4lp"]
+[ext_resource type="Script" uid="uid://b8kho401snmu7" path="res://scripts/gui_3d.gd" id="1_ba00c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3bp0"]
 
 [sub_resource type="QuadMesh" id="1"]
 material = SubResource("StandardMaterial3D_r3bp0")
+size = Vector2(0.4, 1.89)
 
 [sub_resource type="ViewportTexture" id="2"]
 viewport_path = NodePath("SubViewport")
@@ -18,42 +19,31 @@ albedo_texture = SubResource("2")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="4"]
-size = Vector3(1.0056152, 1.022522, 0.1)
+size = Vector3(0.4, 1.89, 0.1)
 
-[node name="GUIPanel3D" type="Node3D" unique_id=695755933]
+[node name="GUIPanel3D_left" type="Node3D" unique_id=695755933]
 process_mode = 3
-script = ExtResource("1_kw4lp")
+script = ExtResource("1_ba00c")
 
-[node name="Control" type="Control" parent="." unique_id=771485172]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=356657645]
+editor_description = "SubViewport contents can be displayed using a ViewportTexture."
+canvas_item_default_texture_filter = 0
+gui_embed_subwindows = true
+size = Vector2i(40, 189)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=771485172]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button2" type="Button" parent="Control" unique_id=1327728390]
-layout_mode = 0
-offset_left = 70.0
-offset_top = 668.0
-offset_right = 110.0
-offset_bottom = 708.0
-text = ">"
-
-[node name="Button" type="Button" parent="Control" unique_id=1305039711]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 334.0
-offset_right = 65.0
-offset_bottom = 374.0
+[node name="LeftButton" type="Button" parent="SubViewport/Control" unique_id=1305039711]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 189.0
 text = "<
 "
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=356657645]
-editor_description = "SubViewport contents can be displayed using a ViewportTexture."
-transparent_bg = true
-canvas_item_default_texture_filter = 0
-gui_embed_subwindows = true
-size = Vector2i(45, 45)
-render_target_update_mode = 4
 
 [node name="Quad" type="MeshInstance3D" parent="." unique_id=1326342475]
 editor_description = "To setup this MeshInstance3D:
@@ -74,4 +64,5 @@ input_capture_on_drag = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0052490085, 0.0064392015, 0)
 shape = SubResource("4")
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/LeftButton" to="." method="_left_pressed"]
+[connection signal="pressed" from="SubViewport/Control/LeftButton" to="." method="_on_button_pressed"]
