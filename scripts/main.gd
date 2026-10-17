@@ -21,34 +21,26 @@ func screen_left() -> void:
 		Camera.FRONT:
 			$Camera3D.look_at($WallLeft.global_position)
 			CameraState = Camera.LEFT
-			print("test")
 		Camera.LEFT:
 			$Camera3D.look_at($WallBack.global_position)
 			CameraState = Camera.BACK
-			print("test")
 		Camera.BACK:
 			$Camera3D.look_at($WallRight.global_position)
 			CameraState = Camera.RIGHT
-			print("test")
 		Camera.RIGHT:
 			$Camera3D.look_at($WallFront.global_position)
 			CameraState = Camera.FRONT
-			print("test")
 func screen_right() -> void:
 	match CameraState:
 		Camera.FRONT:
 			$Camera3D.look_at($WallRight.global_position)
 			CameraState = Camera.RIGHT
-			print("test")
 		Camera.LEFT:
 			$Camera3D.look_at($WallFront.global_position)
 			CameraState = Camera.FRONT
-			print("test")
 		Camera.BACK:
 			$Camera3D.look_at($WallLeft.global_position)
 			CameraState = Camera.LEFT
-			print("test")
 		Camera.RIGHT:
 			$Camera3D.look_at($WallBack.global_position)
 			CameraState = Camera.BACK
-			print("test")
