@@ -17,6 +17,7 @@ var last_event_time := -1.0
 
 signal screen_left
 signal screen_right
+signal send_train
 
 func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
@@ -141,7 +142,7 @@ func rotate_area_to_billboard() -> void:
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
 
 func _on_button_pressed() -> void:
-	pass
+	send_train.emit()
 
 func _left_pressed() -> void:
 	screen_left.emit()

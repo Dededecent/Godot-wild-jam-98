@@ -5,6 +5,8 @@ extends Node2D
 @export var SpawnedMax: int
 @export var SpawnedMin: int
 @export var TimerLength: int
+@export var UseTimer: bool = true
+@export var UseDirection: bool = true
 var numPads: int
 
 
@@ -19,12 +21,18 @@ func _ready() -> void:
 
 func spawnPad():
 	var newPad = Spawnee.instantiate()
-	newPad.direction = SpawnDirection
+	if UseDirection:
+		newPad.direction = SpawnDirection
 	numPads -= 1
 	self.call_deferred("add_child", newPad)
+	if newPad.has_signal("Dead"):
+		newPad.Dead.connect(get_parent()._player_dead)
+	if newPad.has_signal("Win"):
+		newPad.Win.connect(get_parent()._player_win)
 	if numPads <= 0:
 		numPads = (randi() % (SpawnedMax+1 - SpawnedMin)) + SpawnedMin
-		$Timer.start(TimerLength)		
+		if UseTimer:
+			$Timer.start(TimerLength)		
 
 
 
@@ -36,4 +44,8 @@ func _on_area_exited(_area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
+	spawnPad()
+
+
+func _spawn_signal() -> void:
 	spawnPad()

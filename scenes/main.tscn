@@ -44,6 +44,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 10.75
 
 [node name="Main" type="Node3D" unique_id=1801954530]
+transform = Transform3D(0.9669596, 0, 0.2549297, 0, 1, 0, -0.2549297, 0, 0.9669596, 0, 0, 0)
 script = ExtResource("1_0wfyh")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1246360689]
@@ -90,9 +91,10 @@ scaling_3d_mode = 5
 size = Vector2i(142, 256)
 
 [node name="Frogger" parent="SubViewport" unique_id=2009321829 instance=ExtResource("1_o5qli")]
+unique_name_in_owner = true
 
-[node name="GUIPanel3D" parent="." unique_id=1618948147 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.7512565, -0.7665339, -3.3572235)
+[node name="SendTrain" parent="." unique_id=1618948147 instance=ExtResource("5_tbgi4")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.7512565, -1.0757637, -3.3823755)
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=2140327846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4322815, -5, -14.416077)
@@ -119,9 +121,22 @@ mesh = ExtResource("12_eb6dy")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.126481, -31.062231)
 texture = ExtResource("13_trceg")
 
-[node name="Node" type="Node" parent="." unique_id=396040649]
+[node name="Points" type="Label3D" parent="." unique_id=1438365307]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 1.6457903, -1.2551727, -3.3834937)
+text = "Points: "
+font_size = 50
+
+[node name="PauseMenuController" type="Node" parent="." unique_id=396040649]
 script = ExtResource("15_jkv2x")
 pause_menu_packed = ExtResource("16_jbj1t")
 
+[node name="TrainTimer" type="Timer" parent="." unique_id=585418062]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="screen_left" from="Camera3D/GUIPanel3D_left" to="." method="screen_left"]
 [connection signal="screen_right" from="Camera3D/GUIPanel3D_right" to="." method="screen_right"]
+[connection signal="Points" from="SubViewport/Frogger" to="." method="_on_frogger_points"]
+[connection signal="send_train" from="SendTrain" to="." method="_send_train"]
+[connection signal="timeout" from="TrainTimer" to="." method="_on_train_timer_timeout"]

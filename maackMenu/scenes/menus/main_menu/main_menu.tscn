@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://tbp0bllh0w6c" path="res://maackMenu/scenes/menus/main_menu/main_menu.gd" id="2_4eea7"]
 [ext_resource type="PackedScene" uid="uid://hbfxcqehiilb" path="res://maackMenu/scenes/windows/main_menu_options_window.tscn" id="3_j4bdn"]
-[ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/nodes/labels/config_name_label.gd" id="4_pw3ik"]
+[ext_resource type="Texture2D" uid="uid://ch5xsraoj5mev" path="res://assets/TitleScreen.png" id="4_6vaeq"]
 [ext_resource type="PackedScene" uid="uid://co7d2jrfp8gf4" path="res://maackMenu/scenes/windows/main_menu_credits_window.tscn" id="4_rtm4b"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="5_6vaeq"]
+[ext_resource type="FontFile" uid="uid://bhtus1b70w7yf" path="res://assets/MagneticDrawing.ttf" id="5_q4k5c"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="6_q4k5c"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_popup_window_panel.tscn" id="7_ttyqt"]
 
@@ -29,8 +30,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -579.0
+offset_top = 7.0
+offset_right = -579.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 1)
+texture = ExtResource("4_6vaeq")
 expand_mode = 1
 stretch_mode = 5
 
@@ -57,11 +64,15 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 67.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(6.738305e-07, 0.7425246, 0.41550538, 1)
+theme_override_colors/font_outline_color = Color(0, 0.21588334, 0.105141714, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_q4k5c")
 theme_override_font_sizes/font_size = 48
-text = "WildJam"
+text = "Hop abord the frogulon express:
+(new: now with signals) "
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_pw3ik")
 
 [node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer" unique_id=210553886]
 layout_mode = 2

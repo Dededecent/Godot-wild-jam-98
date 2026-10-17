@@ -48,7 +48,6 @@ texture = ExtResource("2_251v8")
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
 physics_layer_1/collision_layer = 4
-physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetScenesCollectionSource_2rcbp")
 sources/1 = SubResource("TileSetAtlasSource_1t0a8")
 
@@ -77,7 +76,7 @@ SpawnedMin = 2
 TimerLength = 3
 
 [node name="Scenes&Track" type="TileMapLayer" parent="." unique_id=571079054]
-tile_map_data = PackedByteArray("AAAEAA8AAAAAAAAAAQAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAHAAMAAQABAAEAAAAIAAMAAQABAAEAAAABAAAAAQADAAAAAAACAAAAAQADAAAAAAADAAAAAQADAAAAAAAEAAAAAQADAAAAAAAFAAAAAQADAAAAAAAGAAAAAQADAAAAAAAHAAAAAQADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAHAAMAAQABAAEAAAAIAAMAAQABAAEAAAABAAAAAQADAAAAAAACAAAAAQADAAAAAAADAAAAAQADAAAAAAAEAAAAAQADAAAAAAAFAAAAAQADAAAAAAAGAAAAAQADAAAAAAAHAAAAAQADAAAAAAA=")
 tile_set = SubResource("TileSet_ehrsr")
 
 [node name="CarSpawner" parent="." unique_id=688501977 instance=ExtResource("5_x5484")]
@@ -87,6 +86,13 @@ Spawnee = ExtResource("6_t384a")
 SpawnedMax = 10
 SpawnedMin = 5
 TimerLength = 4
+
+[node name="GuySpawner" parent="." unique_id=416485409 instance=ExtResource("5_x5484")]
+position = Vector2(72, 248)
+Spawnee = ExtResource("3_x5484")
+TimerLength = 4
+UseTimer = false
+UseDirection = false
 
 [node name="CarSpawner2" parent="." unique_id=380902877 instance=ExtResource("5_x5484")]
 position = Vector2(136, 136)
@@ -103,3 +109,5 @@ Spawnee = ExtResource("6_t384a")
 SpawnedMax = 10
 SpawnedMin = 5
 TimerLength = 4
+
+[connection signal="GuySpawn" from="." to="GuySpawner" method="_spawn_signal"]

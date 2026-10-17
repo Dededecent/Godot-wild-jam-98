@@ -2,16 +2,16 @@
 ## Collaborators
 
 ### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+Dededecent - programming & game design
+Keean Daily - music & art
+TrafficCone51 - Art
+Yliad "Thebombdotcom365" Naeek - 2012-2013 we stole the whole game from him
 
 ## Sourced
 ### Asset Type
 #### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+Created using grass and skybox from ambientCG.com, (im not looking up which one)
+licensed under the Creative Commons CC0 1.0 Universal License.
 
 #### Godot Engine Logo
 Author: Andrea Calabró  
