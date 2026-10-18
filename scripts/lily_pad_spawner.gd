@@ -7,6 +7,7 @@ extends Node2D
 @export var TimerLength: int
 @export var UseTimer: bool = true
 @export var UseDirection: bool = true
+@export var InstaSpawn: bool = true
 var numPads: int
 
 
@@ -14,7 +15,8 @@ var numPads: int
 func _ready() -> void:
 	position = position.snapped(Vector2(8,8))
 	numPads = (randi() % (SpawnedMax+1 - SpawnedMin)) + SpawnedMin
-	spawnPad()
+	if InstaSpawn:
+		spawnPad()
 
 
 

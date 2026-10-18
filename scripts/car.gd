@@ -23,8 +23,6 @@ func move():
 		await tween.finished
 		position = position.snapped(Vector2(SIZE/2,SIZE/2))
 		moving = false
-	if !has_overlapping_bodies():
-		queue_free()
 
 func _physics_process(delta: float) -> void:
 	for area in get_overlapping_areas():
