@@ -8,17 +8,56 @@
 [ext_resource type="PackedScene" uid="uid://bee6j1cexdsdw" path="res://scenes/gui_panel_3d_camera_right.tscn" id="3_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dxrbfih45jm7r" path="res://assets/windowWall.png" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://ul1fp38n6h7k" path="res://scenes/gui_panel_3d.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://b0p7ud53kjsr3" path="res://assets/gizmos.png" id="5_yc10j"]
 [ext_resource type="Texture2D" uid="uid://raku4tm3v72p" path="res://assets/WallBack.png" id="6_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://k50ptqbuesyw" path="res://assets/EveningSkyHDRI048B_1K_TONEMAPPED.jpg" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dmf14ak77qqhg" path="res://assets/Grass001_1K-JPG_NormalDX.jpg" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://b1j8uf852akub" path="res://assets/Grass001_1K-JPG_Color.jpg" id="9_ya4ey"]
 [ext_resource type="ArrayMesh" uid="uid://c5fbd6s3qyjg1" path="res://assets/track.obj" id="12_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://bgwx3pnrg27q8" path="res://assets/trainrealy_ccbync4.png" id="13_trceg"]
+[ext_resource type="Texture2D" uid="uid://dsa53t5khygdu" path="res://assets/nolight.png" id="12_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://4qtx5625iyfc" path="res://assets/redlight.png" id="13_yc10j"]
+[ext_resource type="Texture2D" uid="uid://gk1rt4wegaqk" path="res://assets/train.png" id="14_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://dkhbfoyqj1t2t" path="res://assets/yellowlight.png" id="14_jscy8"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="15_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://c14anteusibyr" path="res://assets/greenlight.png" id="15_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://decsl6525nfc8" path="res://maackMenu/scenes/windows/pause_menu.tscn" id="16_jbj1t"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ngk8"]
+atlas = ExtResource("5_yc10j")
+region = Rect2(1645, 121, 727, 727)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwwrh"]
+atlas = ExtResource("5_yc10j")
+region = Rect2(1649, 1440, 727, 727)
+
+[sub_resource type="Animation" id="Animation_0ld40"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.4502628, 2.129236, -2.9087148)
+
+[sub_resource type="Animation" id="Animation_dp3eg"]
+resource_name = "pull thingy"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.4502628, 2.129236, -2.9087148, 0.43333334, 1, -1.45, 1.5, -2.909, 0.8, 1, -1.4502628, 2.129236, -2.9087148)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ld40"]
+_data = {
+&"RESET": SubResource("Animation_0ld40"),
+&"pull thingy": SubResource("Animation_dp3eg")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p648e"]
 albedo_texture = ExtResource("9_ya4ey")
@@ -28,6 +67,26 @@ normal_texture = ExtResource("9_choun")
 [sub_resource type="BoxMesh" id="BoxMesh_hwwrh"]
 material = SubResource("StandardMaterial3D_p648e")
 size = Vector3(29.987854, 1, 46.191284)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ngk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gqmmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yc10j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jscy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pm3ni")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_choun"]
 resource_local_to_scene = true
@@ -42,6 +101,32 @@ background_mode = 2
 sky = SubResource("Sky_85g3d")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 10.75
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Train")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 2.126481, -31.062231)
+
+[sub_resource type="Animation" id="Animation_muem4"]
+resource_name = "send train"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Train")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.06666667, 1, 0, 2.126481, -31.062231, 0.4, 1, -45.724514, 2.126481, -31.062233, 0.96666664, 1, 0, 2.126481, -31.062231)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dp3eg"]
+_data = {
+&"RESET": SubResource("Animation_jbj1t"),
+&"send train": SubResource("Animation_muem4")
+}
 
 [node name="Main" type="Node3D" unique_id=1801954530]
 transform = Transform3D(0.9669596, 0, 0.2549297, 0, 1, 0, -0.2549297, 0, 0.9669596, 0, 0, 0)
@@ -65,6 +150,33 @@ texture = SubResource("ViewportTexture_0wfyh")
 transform = Transform3D(0.30000004, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_tefeu")
+
+[node name="FullHeart2" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=480741346]
+transform = Transform3D(0.29004166, -1.0477377e-08, -0.07665405, 1.0129587e-08, 0.3, -2.677111e-09, 0.07665405, -2.7333442e-17, 0.29004166, 4.3835545, 3.9502623, 0.84227824)
+texture = SubResource("AtlasTexture_1ngk8")
+
+[node name="FullHeart1" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=629860030]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 3.317352, 3.9258053, 0.3076222)
+texture = SubResource("AtlasTexture_1ngk8")
+
+[node name="FullHeart3" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=1555675747]
+transform = Transform3D(0.29261526, -1.0477377e-08, -0.06615378, 1.0219468e-08, 0.3, -2.3103932e-09, 0.06615378, -7.3021635e-24, 0.29261526, 5.3387427, 4.0002356, 1.3731788)
+texture = SubResource("AtlasTexture_1ngk8")
+
+[node name="EmptyHeart3" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=961386953]
+transform = Transform3D(0.2926604, 0, -0.065953866, 0, 0.3, 0, 0.065953866, 0, 0.2926604, 5.339, 4, 1.373)
+visible = false
+texture = SubResource("AtlasTexture_hwwrh")
+
+[node name="EmptyHeart2" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=1385200997]
+transform = Transform3D(0.29004702, 0, -0.07663374, 0, 0.3, 0, 0.07663374, 0, 0.29004702, 4.384, 3.95, 0.842)
+visible = false
+texture = SubResource("AtlasTexture_hwwrh")
+
+[node name="EmptyHeart1" type="Sprite3D" parent="Sprite3D/Frogboy" unique_id=216595510]
+transform = Transform3D(0.3, -1.0477377e-08, 3.4924594e-09, 1.0477377e-08, 0.3, 1.2197273e-16, -3.4924594e-09, -7.940934e-24, 0.3, 3.317, 3.926, 0.308)
+visible = false
+texture = SubResource("AtlasTexture_hwwrh")
 
 [node name="WallLeft" type="Sprite3D" parent="." unique_id=1446169664]
 transform = Transform3D(-1.7265998e-08, 0, 0.395, 0, 0.395, 0, -0.395, 0, -1.7265998e-08, -4, 0, 0)
@@ -94,19 +206,25 @@ size = Vector2i(142, 256)
 unique_name_in_owner = true
 
 [node name="SendTrain" parent="." unique_id=1618948147 instance=ExtResource("5_tbgi4")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.7512565, -1.0757637, -3.3823755)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -1.4502628, 2.129236, -2.9087148)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SendTrain" unique_id=465713353]
+libraries/ = SubResource("AnimationLibrary_0ld40")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=2140327846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4322815, -5, -14.416077)
 mesh = SubResource("BoxMesh_hwwrh")
+
+[node name="SendSignal" type="AnimatedSprite3D" parent="." unique_id=205704507]
+transform = Transform3D(0.19816557, 0.027026137, 0, -0.027026137, 0.19816557, 0, 0, 0, 0.2, -2.135164, -0.45451498, -2.5173657)
+sprite_frames = SubResource("SpriteFrames_1ngk8")
+frame = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1608427364]
 environment = SubResource("Environment_hwwrh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1173123025]
 transform = Transform3D(-0.88698685, -1.2451554e-09, 0.4617948, 0.31243563, 0.73638004, 0.600107, -0.34005645, 0.67656815, -0.6531594, 1.3175201, 168.1658, 219.38597)
-visible = false
-light_energy = 4.0
 sky_mode = 1
 
 [node name="Track2" type="MeshInstance3D" parent="." unique_id=1704747022]
@@ -118,8 +236,12 @@ transform = Transform3D(-4.371139e-07, 0, 10, 0, 10, 0, -10, 0, -4.371139e-07, 3
 mesh = ExtResource("12_eb6dy")
 
 [node name="Train" type="Sprite3D" parent="." unique_id=1519016158]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.126481, -31.062231)
-texture = ExtResource("13_trceg")
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 2.126481, -31.062231)
+texture = ExtResource("14_jbj1t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Train" unique_id=1634006010]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_dp3eg")
 
 [node name="Points" type="Label3D" parent="." unique_id=1438365307]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 1.6457903, -1.2551727, -3.3834937)
@@ -137,6 +259,8 @@ autostart = true
 
 [connection signal="screen_left" from="Camera3D/GUIPanel3D_left" to="." method="screen_left"]
 [connection signal="screen_right" from="Camera3D/GUIPanel3D_right" to="." method="screen_right"]
+[connection signal="GameOver" from="SubViewport/Frogger" to="." method="game_over"]
+[connection signal="LivesChanged" from="SubViewport/Frogger" to="." method="_on_frogger_lives_changed"]
 [connection signal="Points" from="SubViewport/Frogger" to="." method="_on_frogger_points"]
 [connection signal="send_train" from="SendTrain" to="." method="_send_train"]
 [connection signal="timeout" from="TrainTimer" to="." method="_on_train_timer_timeout"]

@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://ul1fp38n6h7k"]
 
 [ext_resource type="Script" uid="uid://b8kho401snmu7" path="res://scripts/gui_3d.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c1koxs61qx366" path="res://assets/button.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b0p7ud53kjsr3" path="res://assets/gizmos.png" id="2_r3bp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
+atlas = ExtResource("2_r3bp0")
+region = Rect2(5360, 136, 602, 2344)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3bp0"]
 transparency = 1
 
 [sub_resource type="QuadMesh" id="1"]
 material = SubResource("StandardMaterial3D_r3bp0")
+size = Vector2(0.58, 1.87)
 
 [sub_resource type="ViewportTexture" id="2"]
 viewport_path = NodePath("SubViewport")
@@ -20,7 +25,7 @@ albedo_texture = SubResource("2")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="4"]
-size = Vector3(1.0056152, 1.022522, 0.1)
+size = Vector3(0.58, 1.87, 0.1)
 
 [node name="GUIPanel3D" type="Node3D" unique_id=695755933]
 process_mode = 3
@@ -31,21 +36,23 @@ editor_description = "SubViewport contents can be displayed using a ViewportText
 transparent_bg = true
 canvas_item_default_texture_filter = 0
 gui_embed_subwindows = true
-size = Vector2i(45, 45)
+size = Vector2i(58, 187)
 render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="SubViewport" unique_id=771485172]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 58.0
+offset_bottom = 187.0
 
 [node name="Button" type="Button" parent="SubViewport/Control" unique_id=1305039711]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 586.0
+offset_bottom = 1864.0
+scale = Vector2(0.1, 0.1)
 focus_mode = 0
-icon = ExtResource("2")
+icon = SubResource("AtlasTexture_0ld40")
+flat = true
 
 [node name="Quad" type="MeshInstance3D" parent="." unique_id=1326342475]
 editor_description = "To setup this MeshInstance3D:

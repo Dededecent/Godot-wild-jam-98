@@ -48,10 +48,12 @@ func screen_right() -> void:
 			$Camera3D.look_at($WallBack.global_position)
 			CameraState = Camera.BACK
 func _send_train() -> void:
+	$SendTrain/AnimationPlayer.play_section("pull thingy")
 	if TrainState <= 2:
-		points += 1
 		TrainState = 3
-		$Points.text = "Points:" + str(points) + " " + str(TrainState) + " " + str(%Frogger.lives)
+		$SendSignal.frame = TrainState
+		points += 1
+		$Points.text = "Points:" + str(points) +  " " + str(%Frogger.lives)
 		if points >= 10:
 			TrainSpeed = 3.5
 		if points >= 20:
@@ -64,21 +66,62 @@ func _send_train() -> void:
 			TrainSpeed = 1.75
 		if points >= 120:
 			TrainSpeed = 1.5
-
+		$Train/AnimationPlayer.play_section("send train")
 func _on_frogger_points() -> void:
 	pass # Replace with function body.
 	print("test")
 	points += 1
-	$Points.text = "Points:" + str(points) + " " + str(TrainState) + " " + str(%Frogger.lives)
+	$Points.text = "Points:" + str(points) + " " + str(%Frogger.lives)
 
 
 func _on_train_timer_timeout() -> void:
 	TrainState -= 1
-	$Points.text = "Points:" + str(points) + " " + str(TrainState) + " " + str(%Frogger.lives)
-	if TrainState == 0:
-		%Frogger.lives -= 1
+	if TrainState >= 0:
+		$SendSignal.frame = TrainState
+	else:
+		$SendSignal.frame = 0
+	$Points.text = "Points:" + str(points) + " " + str(%Frogger.lives)
+	if TrainState <= 0:
+		%Frogger.lives_changed(1)
+		TrainState = 3
 	$TrainTimer.start(TrainSpeed)
 	
 func game_over() -> void:
 	pass
 	
+
+
+func _on_frogger_lives_changed() -> void:
+	match %Frogger.lives:
+		3:
+			$Sprite3D/Frogboy/FullHeart1.show()
+			$Sprite3D/Frogboy/FullHeart2.show()
+			$Sprite3D/Frogboy/FullHeart3.show()
+			$Sprite3D/Frogboy/EmptyHeart1.hide()
+			$Sprite3D/Frogboy/EmptyHeart2.hide()
+			$Sprite3D/Frogboy/EmptyHeart3.hide()
+		2:
+			$Sprite3D/Frogboy/FullHeart1.show()
+			$Sprite3D/Frogboy/FullHeart2.show()
+			$Sprite3D/Frogboy/FullHeart3.hide()
+			$Sprite3D/Frogboy/EmptyHeart1.hide()
+			$Sprite3D/Frogboy/EmptyHeart2.hide()
+			$Sprite3D/Frogboy/EmptyHeart3.show()
+		1:
+			$Sprite3D/Frogboy/FullHeart1.show()
+			$Sprite3D/Frogboy/FullHeart2.hide()
+			$Sprite3D/Frogboy/FullHeart3.hide()
+			$Sprite3D/Frogboy/EmptyHeart1.hide()
+			$Sprite3D/Frogboy/EmptyHeart2.show()
+			$Sprite3D/Frogboy/EmptyHeart3.show()
+		0:
+			$Sprite3D/Frogboy/FullHeart1.hide()
+			$Sprite3D/Frogboy/FullHeart2.hide()
+			$Sprite3D/Frogboy/FullHeart3.hide()
+			$Sprite3D/Frogboy/EmptyHeart1.show()
+			$Sprite3D/Frogboy/EmptyHeart2.show()
+			$Sprite3D/Frogboy/EmptyHeart3.show()
+
+
+func _on_frogger_game_over() -> void:
+	pass
