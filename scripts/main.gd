@@ -5,6 +5,15 @@ var CameraState: Camera = Camera.FRONT
 var points: int = 0
 var TrainState: int = 3
 var TrainSpeed: float = 4
+var game_over_menu: Node
+@export var game_over_menu_packed: PackedScene
+@export var focused_viewport : Viewport
+
+func _ready() -> void:
+	game_over_menu = game_over_menu_packed.instantiate()
+	game_over_menu.hide()
+	get_tree().current_scene.call_deferred("add_child", game_over_menu)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("flip"):
 		if CameraState == Camera.GAME:
@@ -50,18 +59,23 @@ func screen_right() -> void:
 func _send_train() -> void:
 	$SendTrain/AnimationPlayer.play_section("pull thingy")
 	if TrainState <= 2:
+		if TrainState == 2:
+			points += 1
+			Globals.points = points
+		if TrainState == 1:
+			points += 3
+			Globals.points = points
 		TrainState = 3
 		$SendSignal.frame = TrainState
-		points += 1
-		$Points.text = "Points:" + str(points) +  " " + str(%Frogger.lives)
+		$Points.text = "Points:" + str(points)
 		if points >= 10:
-			TrainSpeed = 3.5
+			TrainSpeed = 4.5
 		if points >= 20:
-			TrainSpeed = 3
+			TrainSpeed = 4
 		if points >= 30:
-			TrainSpeed = 2.5
+			TrainSpeed = 3.5
 		if points >= 50:
-			TrainSpeed = 2.25
+			TrainSpeed = 3.25
 		if points >= 100:
 			TrainSpeed = 1.75
 		if points >= 120:
@@ -70,9 +84,9 @@ func _send_train() -> void:
 func _on_frogger_points() -> void:
 	pass # Replace with function body.
 	print("test")
-	points += 1
-	$Points.text = "Points:" + str(points) + " " + str(%Frogger.lives)
-
+	points += 10
+	Globals.points = points
+	$Points.text = "Points:" + str(points)
 
 func _on_train_timer_timeout() -> void:
 	TrainState -= 1
@@ -80,16 +94,12 @@ func _on_train_timer_timeout() -> void:
 		$SendSignal.frame = TrainState
 	else:
 		$SendSignal.frame = 0
-	$Points.text = "Points:" + str(points) + " " + str(%Frogger.lives)
+	$Points.text = "Points:" + str(points) 
 	if TrainState <= 0:
 		%Frogger.lives_changed(1)
 		TrainState = 3
 	$TrainTimer.start(TrainSpeed)
 	
-func game_over() -> void:
-	pass
-	
-
 
 func _on_frogger_lives_changed() -> void:
 	match %Frogger.lives:
@@ -125,3 +135,17 @@ func _on_frogger_lives_changed() -> void:
 
 func _on_frogger_game_over() -> void:
 	pass
+
+func game_over() -> void:
+	game_over_menu.get_node("%Score").text = "Ur Score:" + str(Globals.points)
+	if game_over_menu.visible: return
+	if not focused_viewport:
+		focused_viewport = get_viewport()
+	var _initial_focus_control = focused_viewport.gui_get_focus_owner()
+	game_over_menu.show()
+	if is_inside_tree() and _initial_focus_control:
+		_initial_focus_control.grab_focus()
+
+# If pause menu should take precedence, override _input() instead.
+
+

@@ -12,6 +12,7 @@ Yliad "Thebombdotcom365" Naeek - 2012-2013 we stole the whole game from him
 #### Use Case
 Created using grass and skybox from ambientCG.com, (im not looking up which one)
 licensed under the Creative Commons CC0 1.0 Universal License.
+Eagle scream sound is under pixabay content license
 
 #### Godot Engine Logo
 Author: Andrea Calabró  

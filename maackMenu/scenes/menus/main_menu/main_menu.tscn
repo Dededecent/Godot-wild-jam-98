@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b7vhan554vdsq"]
 
 [ext_resource type="Script" uid="uid://tbp0bllh0w6c" path="res://maackMenu/scenes/menus/main_menu/main_menu.gd" id="2_4eea7"]
+[ext_resource type="PackedScene" uid="uid://b4f3s4lhllxi6" path="res://scenes/leaderboard.tscn" id="2_q4k5c"]
 [ext_resource type="PackedScene" uid="uid://hbfxcqehiilb" path="res://maackMenu/scenes/windows/main_menu_options_window.tscn" id="3_j4bdn"]
 [ext_resource type="Texture2D" uid="uid://ch5xsraoj5mev" path="res://assets/TitleScreen.png" id="4_6vaeq"]
+[ext_resource type="AudioStream" uid="uid://dhgofwbbfqn2t" path="res://assets/Frogentruckung.wav" id="4_q4k5c"]
 [ext_resource type="PackedScene" uid="uid://co7d2jrfp8gf4" path="res://maackMenu/scenes/windows/main_menu_credits_window.tscn" id="4_rtm4b"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="5_6vaeq"]
 [ext_resource type="FontFile" uid="uid://bhtus1b70w7yf" path="res://assets/MagneticDrawing.ttf" id="5_q4k5c"]
@@ -17,12 +19,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_4eea7")
+leaderboard_packed_scene = ExtResource("2_q4k5c")
 game_scene_path = "uid://bdawiw4ug34xe"
 options_packed_scene = ExtResource("3_j4bdn")
 credits_packed_scene = ExtResource("4_rtm4b")
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1141822549]
 process_mode = 3
+stream = ExtResource("4_q4k5c")
 autoplay = true
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=1940176448]
@@ -114,6 +118,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
+[node name="LeaderBoardButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=2132794774]
+unique_name_in_owner = true
+layout_mode = 2
+text = "scores"
+
 [node name="CreditsButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" unique_id=301223169]
 unique_name_in_owner = true
 layout_mode = 2
@@ -171,6 +180,7 @@ text = "Really exit the game?"
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LeaderBoardButton" to="." method="_on_leader_board_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="confirmed" from="ExitConfirmation" to="." method="_on_exit_confirmation_confirmed"]

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bk62kier77cf2"]
+
+[ext_resource type="Script" uid="uid://ep0gi1e16hef" path="res://scripts/save_score.gd" id="2_mvr4g"]
+[ext_resource type="PackedScene" uid="uid://b7vhan554vdsq" path="res://maackMenu/scenes/menus/main_menu/main_menu.tscn" id="3_csn76"]
+[ext_resource type="Texture2D" uid="uid://ka2cjtw3posa" path="res://assets/pink slip.png" id="4_k8pbw"]
+
+[node name="GameOverMenu" type="PanelContainer" unique_id=1267866340]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -56.0
+offset_right = 147.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1943598583]
+layout_mode = 2
+script = ExtResource("2_mvr4g")
+MainMenu = ExtResource("3_csn76")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=24206554]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=1945106268]
+layout_mode = 2
+texture = ExtResource("4_k8pbw")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1758000836]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2" unique_id=193762849]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer" unique_id=337743476]
+unique_name_in_owner = true
+layout_mode = 2
+text = " Ur Score:"
+horizontal_alignment = 1
+
+[node name="NameEntry" type="LineEdit" parent="VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1715457838]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Name?"
+alignment = 1
+max_length = 10
+
+[node name="Save" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer" unique_id=970220908]
+layout_mode = 2
+text = "Save Score"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/VBoxContainer/Save" to="VBoxContainer" method="_on_save_pressed"]

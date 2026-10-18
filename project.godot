@@ -15,6 +15,10 @@ run/main_scene="res://maackMenu/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*uid://b7erpwbdb4jcr"
+
 [clean_copy_examples]
 
 examples_paths=Array[String](["res://addons/maaacks_menus_template/examples/"])
@@ -32,6 +36,10 @@ enabled=PackedStringArray("res://addons/maaacks_menus_template/plugin.cfg", "res
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+theme/custom_font="res://assets/Kaph-Regular.ttf"
 
 [input]
 

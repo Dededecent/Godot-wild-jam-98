@@ -14,7 +14,6 @@ var numPads: int
 func _ready() -> void:
 	position = position.snapped(Vector2(8,8))
 	numPads = (randi() % (SpawnedMax+1 - SpawnedMin)) + SpawnedMin
-
 	spawnPad()
 
 
@@ -33,8 +32,6 @@ func spawnPad():
 		numPads = (randi() % (SpawnedMax+1 - SpawnedMin)) + SpawnedMin
 		if UseTimer:
 			$Timer.start(TimerLength)		
-
-
 
 func _on_area_exited(_area: Area2D) -> void:
 	if !$Timer.is_stopped():

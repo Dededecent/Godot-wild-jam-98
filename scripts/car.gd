@@ -2,8 +2,9 @@ extends Area2D
 @export var direction: Vector2
 var realPosition := position
 const SIZE := 16
-const ANIM_SPEED := 4
+const ANIM_SPEED := 5
 var moving := false
+
 
 func _ready():
 	position = position.snapped(Vector2(SIZE/2,SIZE/2))

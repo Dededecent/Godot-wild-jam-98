@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://do17dj7h7a0jd" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://21an4ln8bp7v" path="res://scenes/frogger.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://cnw12vvxadscg" path="res://assets/wall.png" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bk62kier77cf2" path="res://scenes/game_over_menu.tscn" id="2_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://hdk6hu1gmeqj" path="res://assets/frogboymicro.png" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://snkiimoc6kqd" path="res://scenes/gui_panel_3d_camera_left.tscn" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://bee6j1cexdsdw" path="res://scenes/gui_panel_3d_camera_right.tscn" id="3_85g3d"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ul1fp38n6h7k" path="res://scenes/gui_panel_3d.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://b0p7ud53kjsr3" path="res://assets/gizmos.png" id="5_yc10j"]
 [ext_resource type="Texture2D" uid="uid://raku4tm3v72p" path="res://assets/WallBack.png" id="6_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bf0du1u8xut1t" path="res://assets/frogwife.png" id="7_jscy8"]
 [ext_resource type="Texture2D" uid="uid://k50ptqbuesyw" path="res://assets/EveningSkyHDRI048B_1K_TONEMAPPED.jpg" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dmf14ak77qqhg" path="res://assets/Grass001_1K-JPG_NormalDX.jpg" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://b1j8uf852akub" path="res://assets/Grass001_1K-JPG_Color.jpg" id="9_ya4ey"]
@@ -131,6 +133,7 @@ _data = {
 [node name="Main" type="Node3D" unique_id=1801954530]
 transform = Transform3D(0.9669596, 0, 0.2549297, 0, 1, 0, -0.2549297, 0, 0.9669596, 0, 0, 0)
 script = ExtResource("1_0wfyh")
+game_over_menu_packed = ExtResource("2_pm3ni")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1246360689]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -182,6 +185,10 @@ texture = SubResource("AtlasTexture_hwwrh")
 transform = Transform3D(-1.7265998e-08, 0, 0.395, 0, 0.395, 0, -0.395, 0, -1.7265998e-08, -4, 0, 0)
 texture_filter = 0
 texture = ExtResource("2_jyhfs")
+
+[node name="BeautifulFrogWife" type="Sprite3D" parent="WallLeft" unique_id=752894102]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 3.5334427, 0, 0.92225975)
+texture = ExtResource("7_jscy8")
 
 [node name="WallRight" type="Sprite3D" parent="." unique_id=897598434]
 transform = Transform3D(-1.7265998e-08, 0, 0.395, 0, 0.395, 0, -0.395, 0, -1.7265998e-08, 4, 0, 0)
@@ -245,7 +252,7 @@ libraries/ = SubResource("AnimationLibrary_dp3eg")
 
 [node name="Points" type="Label3D" parent="." unique_id=1438365307]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 1.6457903, -1.2551727, -3.3834937)
-text = "Points: "
+text = "Points: 0"
 font_size = 50
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=396040649]
