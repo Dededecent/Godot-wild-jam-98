@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8mlvaedri64o"
+path="res://.godot/imported/gamer frog moment.wav-a9e7ef8f7f0066585f26623fe4aa7bd0.sample"
+
+[deps]
+
+source_file="res://assets/gamer frog moment.wav"
+dest_files=["res://.godot/imported/gamer frog moment.wav-a9e7ef8f7f0066585f26623fe4aa7bd0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -8,6 +8,7 @@ extends Node2D
 @export var UseTimer: bool = true
 @export var UseDirection: bool = true
 @export var InstaSpawn: bool = true
+@export var sendMulti: bool = true
 var numPads: int
 
 
@@ -36,6 +37,8 @@ func spawnPad():
 			$Timer.start(TimerLength)		
 
 func _on_area_exited(_area: Area2D) -> void:
+	if !sendMulti:
+		return
 	if !$Timer.is_stopped():
 		return
 	else:
@@ -43,7 +46,8 @@ func _on_area_exited(_area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	spawnPad()
+	if UseTimer:
+		spawnPad()
 
 
 func _spawn_signal() -> void:

@@ -23,6 +23,12 @@
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/nodes/utilities/pause_menu_controller.gd" id="15_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c14anteusibyr" path="res://assets/greenlight.png" id="15_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://decsl6525nfc8" path="res://maackMenu/scenes/windows/pause_menu.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://dw7ochkqpbfao" path="res://scenes/brokenscreen.tscn" id="24_og1vs"]
+[ext_resource type="AudioStream" uid="uid://bw3fv61ri1un0" path="res://assets/soundreality-click-233950.mp3" id="24_y6deb"]
+[ext_resource type="AudioStream" uid="uid://dweobwgh0sa1j" path="res://assets/freesound_community-electronic-hit-98242.mp3" id="26_vxglm"]
+[ext_resource type="Texture2D" uid="uid://clgqmlkhw2xvd" path="res://assets/screenyes.png" id="27_2f3dj"]
+[ext_resource type="AudioStream" uid="uid://cwcucm48v624x" path="res://assets/FrogWay Express.wav" id="28_2f3dj"]
+[ext_resource type="AudioStream" uid="uid://othy02vn1mix" path="res://assets/FrogOver.wav" id="28_yq6so"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
 viewport_path = NodePath("SubViewport")
@@ -129,6 +135,10 @@ _data = {
 &"RESET": SubResource("Animation_jbj1t"),
 &"send train": SubResource("Animation_muem4")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehrsr"]
+atlas = ExtResource("5_yc10j")
+region = Rect2(2670, 2502, 1096, 955)
 
 [node name="Main" type="Node3D" unique_id=1801954530]
 transform = Transform3D(0.9669596, 0, 0.2549297, 0, 1, 0, -0.2549297, 0, 0.9669596, 0, 0, 0)
@@ -264,6 +274,42 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="BrokenScreen" parent="." unique_id=638954717 instance=ExtResource("24_og1vs")]
+transform = Transform3D(-20, 0, -1.7484556e-06, 0, 20, 0, 1.7484556e-06, 0, -20, -1.685, 1.248, 3.0418017)
+visible = false
+
+[node name="SendClick" type="AudioStreamPlayer" parent="." unique_id=1989466786]
+stream = ExtResource("24_y6deb")
+
+[node name="BrokeScreen" type="AudioStreamPlayer" parent="." unique_id=627169824]
+stream = ExtResource("26_vxglm")
+
+[node name="FixedScreen" type="Sprite3D" parent="." unique_id=1026871630]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -1.6846914, 1.248, 3.1400414)
+texture = ExtResource("27_2f3dj")
+
+[node name="BrokeTimer" type="Timer" parent="." unique_id=38191808]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Gizmo2" type="Sprite3D" parent="." unique_id=1219780413]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 2.5906553, 0.64339495, -0.25816518)
+texture = SubResource("AtlasTexture_ehrsr")
+
+[node name="Gizmo" type="Sprite3D" parent="." unique_id=511874140]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 2.7942386, 1.4404492, -1.4395068)
+texture = SubResource("AtlasTexture_ehrsr")
+
+[node name="Gameoversic" type="AudioStreamPlayer" parent="." unique_id=1056842]
+stream = ExtResource("28_yq6so")
+volume_db = -10.0
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1236673545]
+stream = ExtResource("28_2f3dj")
+volume_db = -2.0
+autoplay = true
+
 [connection signal="screen_left" from="Camera3D/GUIPanel3D_left" to="." method="screen_left"]
 [connection signal="screen_right" from="Camera3D/GUIPanel3D_right" to="." method="screen_right"]
 [connection signal="GameOver" from="SubViewport/Frogger" to="." method="game_over"]
@@ -271,3 +317,5 @@ autostart = true
 [connection signal="Points" from="SubViewport/Frogger" to="." method="_on_frogger_points"]
 [connection signal="send_train" from="SendTrain" to="." method="_send_train"]
 [connection signal="timeout" from="TrainTimer" to="." method="_on_train_timer_timeout"]
+[connection signal="fucky_signal" from="BrokenScreen" to="." method="_fucky_signal"]
+[connection signal="timeout" from="BrokeTimer" to="." method="_broke_timer"]

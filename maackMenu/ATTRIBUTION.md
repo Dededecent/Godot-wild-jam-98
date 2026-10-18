@@ -2,17 +2,16 @@
 ## Collaborators
 
 ### Role
-Dededecent - programming & game design
-Keean Daily - music & art
-TrafficCone51 - Art
-Yliad "Thebombdotcom365" Naeek - 2012-2013 we stole the whole game from him
+
+
 
 ## Sourced
 ### Asset Type
 #### Use Case
 Created using grass and skybox from ambientCG.com, (im not looking up which one)
 licensed under the Creative Commons CC0 1.0 Universal License.
-Eagle scream sound is under pixabay content license
+Eagle scream sound and other sound effects are under pixabay content license
+this credits sucks cause we made it wayyyyy too late
 
 #### Godot Engine Logo
 Author: Andrea Calabró  

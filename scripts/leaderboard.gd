@@ -14,7 +14,8 @@ func _ready():
 			$VBoxContainer.add_child(newleaderboardslot)
 			
 		
-
+func _on_back_pressed():
+	queue_free()
 
 
 func add_to_leaderboard(player: String, player_points: int) -> void:

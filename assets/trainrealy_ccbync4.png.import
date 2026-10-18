@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgwx3pnrg27q8"
 path.s3tc="res://.godot/imported/trainrealy_ccbync4.png-b74b8213b651d9abf14f12c6e6b01369.s3tc.ctex"
+path.etc2="res://.godot/imported/trainrealy_ccbync4.png-b74b8213b651d9abf14f12c6e6b01369.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/trainrealy_ccbync4.png"
-dest_files=["res://.godot/imported/trainrealy_ccbync4.png-b74b8213b651d9abf14f12c6e6b01369.s3tc.ctex"]
+dest_files=["res://.godot/imported/trainrealy_ccbync4.png-b74b8213b651d9abf14f12c6e6b01369.s3tc.ctex", "res://.godot/imported/trainrealy_ccbync4.png-b74b8213b651d9abf14f12c6e6b01369.etc2.ctex"]
 
 [params]
 

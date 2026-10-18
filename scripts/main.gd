@@ -6,6 +6,7 @@ var points: int = 0
 var TrainState: int = 3
 var TrainSpeed: float = 4
 var game_over_menu: Node
+var BrokeState: int = 2
 @export var game_over_menu_packed: PackedScene
 @export var focused_viewport : Viewport
 
@@ -13,6 +14,7 @@ func _ready() -> void:
 	game_over_menu = game_over_menu_packed.instantiate()
 	game_over_menu.hide()
 	get_tree().current_scene.call_deferred("add_child", game_over_menu)
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("flip"):
@@ -90,6 +92,7 @@ func _on_frogger_points() -> void:
 
 func _on_train_timer_timeout() -> void:
 	TrainState -= 1
+	$SendClick.play()
 	if TrainState >= 0:
 		$SendSignal.frame = TrainState
 	else:
@@ -137,6 +140,8 @@ func _on_frogger_game_over() -> void:
 	pass
 
 func game_over() -> void:
+	$Music.stop()
+	$Gameoversic.play()
 	game_over_menu.get_node("%Score").text = "Ur Score:" + str(Globals.points)
 	if game_over_menu.visible: return
 	if not focused_viewport:
@@ -146,6 +151,36 @@ func game_over() -> void:
 	if is_inside_tree() and _initial_focus_control:
 		_initial_focus_control.grab_focus()
 
-# If pause menu should take precedence, override _input() instead.
+func _fucky_signal() -> void:
+	if BrokeState == 1:
+		BrokeState == 2
+		points += 1
+		Globals.points = points
+		$FixedScreen.show()
+		$BrokenScreen.hide()
+		if Globals.points >= 50:
+			$BrokeTimer.start(randf_range(15,20))
+		else:
+			$BrokeTimer.start(randf_range(19,25))
 
+func _broke_timer() -> void:
+	BrokeState -= 1
+	$BrokeScreen.play()
+	$BrokenScreen.show()
+	$FixedScreen.hide()
+	if BrokeState == 0:
+		$FixedScreen.show()
+		$BrokenScreen.hide()
+		%Frogger.lives_changed(1)
+		BrokeState = 2
+		if Globals.points >= 50:
+			$BrokeTimer.start(randf_range(15,20))
+		else:
+			$BrokeTimer.start(randf_range(19,25))
+	else:
+		if Globals.points >= 50:
+			$BrokeTimer.start(randf_range(15,20))
+		else:
+			$BrokeTimer.start(randf_range(19,25))
 
+		

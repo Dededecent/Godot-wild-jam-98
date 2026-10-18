@@ -18,6 +18,7 @@ var last_event_time := -1.0
 signal screen_left
 signal screen_right
 signal send_train
+signal fucky_signal
 
 func _ready() -> void:
 	node_area.mouse_entered.connect(_mouse_entered_area)
@@ -147,7 +148,11 @@ func _on_button_pressed() -> void:
 func _left_pressed() -> void:
 	screen_left.emit()
 	
-
 func _right_pressed() -> void:
 	screen_right.emit()
+
+
+func _fucky_pressed() -> void:
+	print('test')
+	fucky_signal.emit()
 	

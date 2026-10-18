@@ -8,6 +8,7 @@ var inputs := {"right": Vector2.RIGHT,
 			"up": Vector2.UP,
 			"down": Vector2.DOWN}
 var won: bool = false
+var moved := false
 signal Dead
 signal Win
 
@@ -31,6 +32,7 @@ func _on_body_entered(_body) -> void:
 	#win()					
 
 func move(direction: Vector2):
+	moved = true
 	var raycast: RayCast2D = $RayCast2D	
 	var padcast: RayCast2D = $PadCast
 	
@@ -59,8 +61,9 @@ func move(direction: Vector2):
 		position = position.snapped(Vector2(SIZE/2,SIZE/2))
 		die()
 func die():
-	Dead.emit()
-	queue_free()
+	if moved:
+		Dead.emit()
+		queue_free()
 func win():
 	if !won:
 		won = true

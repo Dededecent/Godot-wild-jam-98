@@ -8,11 +8,9 @@ signal EagleSpawn
 var EagleTimeLength: float
 
 func _ready() -> void:
-	EagleTimeLength = randf_range(8,12)
+	EagleTimeLength = randf_range(1,2)
 	$EagleTimer.start(EagleTimeLength)
 
-func _physics_process(delta: float) -> void:
-	print($EagleSpawner.position)
 
 
 func _player_dead() -> void:

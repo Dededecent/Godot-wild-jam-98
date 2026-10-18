@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://gk1rt4wegaqk"
 path.s3tc="res://.godot/imported/train.png-95361e61a040defc1cafc874ed485efe.s3tc.ctex"
+path.etc2="res://.godot/imported/train.png-95361e61a040defc1cafc874ed485efe.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/train.png"
-dest_files=["res://.godot/imported/train.png-95361e61a040defc1cafc874ed485efe.s3tc.ctex"]
+dest_files=["res://.godot/imported/train.png-95361e61a040defc1cafc874ed485efe.s3tc.ctex", "res://.godot/imported/train.png-95361e61a040defc1cafc874ed485efe.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkhbfoyqj1t2t"
 path.s3tc="res://.godot/imported/yellowlight.png-5c0c874bf873590f5c1809e52242578e.s3tc.ctex"
+path.etc2="res://.godot/imported/yellowlight.png-5c0c874bf873590f5c1809e52242578e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/yellowlight.png"
-dest_files=["res://.godot/imported/yellowlight.png-5c0c874bf873590f5c1809e52242578e.s3tc.ctex"]
+dest_files=["res://.godot/imported/yellowlight.png-5c0c874bf873590f5c1809e52242578e.s3tc.ctex", "res://.godot/imported/yellowlight.png-5c0c874bf873590f5c1809e52242578e.etc2.ctex"]
 
 [params]
 

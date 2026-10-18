@@ -95,6 +95,7 @@ Spawnee = ExtResource("3_x5484")
 TimerLength = 4
 UseTimer = false
 UseDirection = false
+sendMulti = false
 
 [node name="CarSpawner2" parent="." unique_id=380902877 instance=ExtResource("5_x5484")]
 position = Vector2(136, 136)
@@ -119,6 +120,7 @@ Spawnee = ExtResource("7_8e8fl")
 TimerLength = 4
 UseTimer = false
 InstaSpawn = false
+sendMulti = false
 
 [node name="EagleTimer" type="Timer" parent="." unique_id=226394296]
 wait_time = 10.0

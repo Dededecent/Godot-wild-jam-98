@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dw7ochkqpbfao"]
+
+[ext_resource type="Script" uid="uid://b8kho401snmu7" path="res://scripts/gui_3d.gd" id="1_v87el"]
+[ext_resource type="Texture2D" uid="uid://bgbl41ytfdiqv" path="res://assets/screenno.png" id="2_v87el"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3bp0"]
+transparency = 1
+
+[sub_resource type="QuadMesh" id="1"]
+material = SubResource("StandardMaterial3D_r3bp0")
+size = Vector2(1.09, 0.84)
+
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="3"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("2")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(1.09, 0.84, 0.1)
+
+[node name="GUIPanel3D" type="Node3D" unique_id=695755933]
+process_mode = 3
+script = ExtResource("1_v87el")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=356657645]
+editor_description = "SubViewport contents can be displayed using a ViewportTexture."
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+gui_embed_subwindows = true
+size = Vector2i(109, 84)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=771485172]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 109.0
+offset_bottom = 84.0
+
+[node name="Button" type="Button" parent="SubViewport/Control" unique_id=1305039711]
+layout_mode = 0
+offset_right = 1147.0
+offset_bottom = 840.0
+scale = Vector2(0.1, 0.1)
+focus_mode = 0
+icon = ExtResource("2_v87el")
+flat = true
+
+[node name="Quad" type="MeshInstance3D" parent="." unique_id=1326342475]
+editor_description = "To setup this MeshInstance3D:
+* Set Surface Material Override to a new StandardMaterial3D.
+* At the bottom of the StandardMaterial3D's properties, set \"Local to Scene\" to true.
+* Set the Albedo Texture of StandardMaterial3D to new ViewportTexture and set the Viewport Path.
+* Transparency to Alpha.
+* Shading to Unshaded."
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("3")
+
+[node name="Area3D" type="Area3D" parent="Quad" unique_id=150863678]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D" unique_id=1684428181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0052490085, 0.0064392015, 0)
+shape = SubResource("4")
+
+[connection signal="pressed" from="SubViewport/Control/Button" to="." method="_fucky_pressed"]

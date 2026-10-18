@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7rr1760ehds4" path="res://maackMenu/scenes/credits/scrollable_credits.tscn" id="3_u6yfu"]
 [ext_resource type="PackedScene" uid="uid://djd1otv7t1bd8" path="res://addons/maaacks_menus_template/base/nodes/windows/popup_parent.tscn" id="3_xhs1v"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="4_u6yfu"]
+[ext_resource type="AudioStream" uid="uid://c8mlvaedri64o" path="res://assets/gamer frog moment.wav" id="5_u6yfu"]
 
 [node name="MainMenuCreditsWindow" type="PanelContainer" unique_id=1453761674]
 anchors_preset = 15
@@ -95,3 +96,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="Credits" type="AudioStreamPlayer" parent="." unique_id=1576040400]
+stream = ExtResource("5_u6yfu")
+autoplay = true

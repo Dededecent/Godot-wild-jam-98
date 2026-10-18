@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c14anteusibyr"
 path.s3tc="res://.godot/imported/greenlight.png-b933a28b92a3ba3931cbb1d8e987a283.s3tc.ctex"
+path.etc2="res://.godot/imported/greenlight.png-b933a28b92a3ba3931cbb1d8e987a283.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/greenlight.png"
-dest_files=["res://.godot/imported/greenlight.png-b933a28b92a3ba3931cbb1d8e987a283.s3tc.ctex"]
+dest_files=["res://.godot/imported/greenlight.png-b933a28b92a3ba3931cbb1d8e987a283.s3tc.ctex", "res://.godot/imported/greenlight.png-b933a28b92a3ba3931cbb1d8e987a283.etc2.ctex"]
 
 [params]
 
