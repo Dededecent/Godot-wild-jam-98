@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://ch5xsraoj5mev" path="res://assets/TitleScreen.png" id="4_6vaeq"]
 [ext_resource type="AudioStream" uid="uid://dhgofwbbfqn2t" path="res://assets/Frogentruckung.wav" id="4_q4k5c"]
 [ext_resource type="PackedScene" uid="uid://co7d2jrfp8gf4" path="res://maackMenu/scenes/windows/main_menu_credits_window.tscn" id="4_rtm4b"]
+[ext_resource type="AudioStream" uid="uid://c8mlvaedri64o" path="res://assets/gamer frog moment.wav" id="4_ttyqt"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_menus_template/base/nodes/utilities/capture_focus.gd" id="5_6vaeq"]
 [ext_resource type="FontFile" uid="uid://bhtus1b70w7yf" path="res://assets/MagneticDrawing.ttf" id="5_q4k5c"]
 [ext_resource type="Script" uid="uid://dmkubt2nsnsbn" path="res://addons/maaacks_menus_template/base/nodes/labels/config_version_label.gd" id="6_q4k5c"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_menus_template/base/nodes/windows/confirmation_popup_window_panel.tscn" id="7_ttyqt"]
+[ext_resource type="AudioStream" uid="uid://dyph7r01k7nq3" path="res://assets/Froggent.wav" id="12_xtga5"]
 
 [node name="MainMenu" type="Control" unique_id=869232425]
 layout_mode = 3
@@ -178,10 +180,16 @@ ui_cancel_closes = false
 title = "Exit Game?"
 text = "Really exit the game?"
 
+[node name="CreditsMusic" type="AudioStreamPlayer" parent="." unique_id=1409735106]
+stream = ExtResource("4_ttyqt")
+
+[node name="LeaderBoardMusic" type="AudioStreamPlayer" parent="." unique_id=1112563001]
+stream = ExtResource("12_xtga5")
+
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LeaderBoardButton" to="." method="_on_leader_board_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed_2"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="confirmed" from="ExitConfirmation" to="." method="_on_exit_confirmation_confirmed"]

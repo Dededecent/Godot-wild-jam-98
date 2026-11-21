@@ -1,8 +1,11 @@
 extends Control
 @export var leaderboardSlot: PackedScene
+var empty := false
 func _ready():
 	var displayed = 0
-	#add_to_leaderboard("test1", 100)
+	if Globals.leaderboard.is_empty():
+		add_to_leaderboard("None yet :)", -100000000)
+		empty = true
 	for score in Globals.leaderboard:
 		if displayed > 10:
 			return
@@ -15,6 +18,8 @@ func _ready():
 			
 		
 func _on_back_pressed():
+	if empty == true:
+		Globals.leaderboard.clear()
 	queue_free()
 
 
