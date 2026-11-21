@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dc5jdbo8uh611" path="res://maackMenu/assets/godot_engine_logo/logo_vertical_color_dark.png" id="2_0q2w8"]
 [ext_resource type="Texture2D" uid="uid://dduuvd0x32eyc" path="res://assets/keyboardmouse.png" id="3_sbspt"]
 [ext_resource type="Texture2D" uid="uid://dbbtho38i7eys" path="res://assets/audio.png" id="4_esdry"]
+[ext_resource type="Texture2D" uid="uid://dsl0rkywo41en" path="res://assets/tutorial_but_in_massive_airquotes.png" id="5_esdry"]
 
 [node name="Opening" unique_id=1930105641 instance=ExtResource("1_pebx1")]
-images = Array[Texture2D]([ExtResource("2_0q2w8"), ExtResource("3_sbspt"), ExtResource("4_esdry")])
+images = Array[Texture2D]([ExtResource("2_0q2w8"), ExtResource("3_sbspt"), ExtResource("4_esdry"), ExtResource("5_esdry")])
 
 [node name="ImagesContainer" parent="." index="2" unique_id=1471559661]
 theme_override_constants/margin_left = 64
