@@ -2,7 +2,7 @@ extends Control
 @export var leaderboardSlot: PackedScene
 func _ready():
 	var displayed = 0
-	add_to_leaderboard("test1", 100)
+	#add_to_leaderboard("test1", 100)
 	for score in Globals.leaderboard:
 		if displayed > 10:
 			return

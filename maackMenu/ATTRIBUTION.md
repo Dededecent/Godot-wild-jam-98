@@ -3,7 +3,13 @@
 
 ### Role
 
+Dededecent - programming & game design
 
+Keean Daily - music & art
+
+TrafficCone51 - Art
+
+Yliad "Thebombdotcom365" Naeek - 2012-2013 we stole the whole game from him
 
 ## Sourced
 ### Asset Type
